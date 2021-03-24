@@ -1,0 +1,30 @@
+version: '2'
+services:
+ rabbit:
+   image: arm32v7/rabbitmq:3-management
+   ports:
+    - "5672:5672"
+    - "15672:15672"
+ publisher:
+   image: python-image:latest
+   build: .
+   links:
+    - rabbit
+   volumes:
+    - .:/app
+   command: python temp_publisher.py
+ persistor:
+   image: python-image:latest
+   build: .
+   links:
+    - db
+    - rabbit
+   volumes:
+    - .:/app
+   command: python temp_persistor.py
+ db:
+    image: mysql-db:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - /home/pi/bagend-project/mysql:/var/lib/mysql
