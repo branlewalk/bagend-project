@@ -1,7 +1,5 @@
-import json
 from flask import Flask, jsonify
 from thermo import read_sensor
-
 
 app = Flask(__name__, static_url_path='')
 app.url_map.strict_slashes = False
@@ -16,6 +14,7 @@ def temps():
     ## 
     return jsonify(Temp());
 
+# Retrieve single temp from Thermo sensor
 @app.route('temp/{<temp_type>', methods=['GET'])
 def temp(temp_type):
     if(temp_type == 'hlt'):
@@ -31,7 +30,6 @@ if __name__ == '__main__':
     app.run(debug=True, port=80, host='0.0.0.0')
 
 class Temp:
-
     def __init__(self):
         temps = read_sensor()
         self.hlt = temps[0][1]

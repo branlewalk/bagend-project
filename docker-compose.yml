@@ -13,15 +13,6 @@ services:
    volumes:
     - .:/app
    command: python temp_publisher.py
- persistor:
-   image: python-image:latest
-   build: .
-   links:
-    - db
-    - rabbit
-   volumes:
-    - .:/app
-   command: python temp_persistor.py
  db:
     image: mysql-db:latest
     ports:

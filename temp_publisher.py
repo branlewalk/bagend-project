@@ -1,12 +1,9 @@
-import os
-import sys
 from time import sleep
 import json
 from thermo import read_sensor
 import pika
 from datetime import datetime
 
-# sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 connection = pika.BlockingConnection(pika.ConnectionParameters('rabbit', 5672, '/'))
 channel = connection.channel()
 channel.exchange_declare(exchange='temps', exchange_type='fanout')

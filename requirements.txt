@@ -1,12 +1,1 @@
-marshmallow
 Flask
-pika
-flask_cors
-flask_sqlalchemy
-sqlalchemy
-PyMySQL
-mysql-connector-python
-ConfigParser
-marshmallow_sqlalchemy==0.22.3
-flask_marshmallow==0.11.0
-
