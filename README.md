@@ -1,4 +1,4 @@
-# bagend-project
+# brewify-iot
 
 ## Overview
 This repo is for a homebrew stand device that will read temperatures and then either publish them to a RabbitMq queue, send to a DB or sends directly to a Web App.
